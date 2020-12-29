@@ -26,12 +26,10 @@ function App() {
     fetchProducts();
     fetchCart();
   }, []);
-
-  console.log(cart)
-
+  
   return (
     <div className="App">
-      <Navbar totalItems={cart.total_items} />
+      <Navbar totalItems={cart?.total_items} />
       {/* <Products products={products} onAddToCart={handleAddToCart} /> */}
       <Cart cart={cart} />
     </div>
