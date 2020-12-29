@@ -1,6 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: "100vh"
+  },
+  circular: {
+    margin: 'auto',
+  },
   toolbar: theme.mixins.toolbar,
   title: {
     marginTop: '5%',
