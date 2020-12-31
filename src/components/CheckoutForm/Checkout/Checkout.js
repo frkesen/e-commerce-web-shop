@@ -23,16 +23,16 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const classes = useStyles();
 
   useEffect(() => {
-     const generateToken = async () => {
-          try {
-            const token = await commerce.checkout.generateToken(cart.id, { type: 'cart' });
-            console.log(token);
-            setCheckoutToken(token);
-          } catch (error) {
-
-          }
-      }
-      generateToken();
+    const generateToken = async () => {
+      try {
+        const token = await commerce.checkout.generateToken(cart.id, {
+          type: "cart",
+        });
+        console.log(token);
+        setCheckoutToken(token);
+      } catch (error) {}
+    };
+    generateToken();
   }, [cart]);
 
   const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -41,17 +41,22 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
   const next = (data) => {
     setShippingData(data);
     nextStep();
-  }
+  };
 
-  const Confirmation = () => (
-      <div>
-          Confirmation
-      </div>
-  )
+  const Confirmation = () => <div>Confirmation</div>;
 
-  const Form = () => activeStep === 0
-    ? <AddressForm checkoutToken={checkoutToken} next={next} />
-    : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} backStep={backStep} nextStep={nextStep} onCaptureCheckout={onCaptureCheckout} />
+  const Form = () =>
+    activeStep === 0 ? (
+      <AddressForm checkoutToken={checkoutToken} next={next} />
+    ) : (
+      <PaymentForm
+        shippingData={shippingData}
+        checkoutToken={checkoutToken}
+        backStep={backStep}
+        nextStep={nextStep}
+        onCaptureCheckout={onCaptureCheckout}
+      />
+    );
 
   return (
     <>
@@ -68,7 +73,11 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
               </Step>
             ))}
           </Stepper>
-          {activeStep === steps.length ? <Confirmation /> : checkoutToken && <Form />}
+          {activeStep === steps.length ? (
+            <Confirmation />
+          ) : (
+            checkoutToken && <Form />
+          )}
         </Paper>
       </main>
     </>
