@@ -63,7 +63,7 @@ const AddressForm = ({ checkoutToken, next }) => {
     );
 
     setShippingOptions(options);
-    setShippingOption(options[0].id);
+    setShippingOption(options[0]?.id);
   };
 
   useEffect(() => {
