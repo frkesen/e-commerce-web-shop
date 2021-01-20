@@ -8,13 +8,10 @@ const Products = ({ products, onAddToCart }) => {
   const classes = useStyles();
 
   return (
+    <>
+    {products ? (
     <main className={classes.content}>
       <div className={classes.toolbar} />
-      {products == null ? (
-        <div className={classes.root}>
-          <CircularProgress className={classes.circular} />
-        </div>
-      ) : (
         <Grid container justify="center" spacing={4}>
           {products.map((product) => (
             <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
@@ -22,8 +19,13 @@ const Products = ({ products, onAddToCart }) => {
             </Grid>
           ))}
         </Grid>
-      )}
     </main>
+     ) : (
+        <div className={classes.root}>
+          <CircularProgress />
+        </div>
+      )}
+    </>
   );
 };
 

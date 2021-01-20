@@ -7,9 +7,9 @@ export default makeStyles((theme) => ({
     justifyContent: 'center',
     minHeight: "100vh"
   },
-  circular: {
-    margin: 'auto',
-  },
+  // circular: {
+  //   margin: 'auto',
+  // },
   toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
