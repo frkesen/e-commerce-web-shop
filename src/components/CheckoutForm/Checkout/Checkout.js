@@ -121,7 +121,11 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
           {activeStep === steps.length ? (
             <Confirmation />
           ) : (
-            checkoutToken && <Form />
+            checkoutToken ? <Form /> : (
+              <div className={classes.spinner}>
+                <CircularProgress />
+              </div>
+            )
           )}
         </Paper>
       </main>
